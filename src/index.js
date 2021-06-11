@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import Students from './Students';
+import Todo from './Todo';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
     <div>
-      <Students />
+      <Todo />
     </div>
   </React.StrictMode>,
   document.getElementById('root')

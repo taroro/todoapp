@@ -8,6 +8,7 @@ class Students extends React.Component {
             email: "",
             fullname: ""
         };
+        time = "1234"
     }
 
     updateInput = e => {
