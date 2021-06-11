@@ -9,7 +9,12 @@ function TodoList() {
     useEffect(() => {
         firebase.firestore().collection('Todos').onSnapshot((snapshot) => {
             const todoData = [];
-            snapshot.forEach((doc) => todoData.push({ ...doc.data(), id: doc.id }));
+            snapshot.forEach(
+                (doc) => todoData.push(
+                    { ...doc.data(), 
+                        id: doc.id }
+                    )
+            );
             console.log(todoData);  
             setTodos(todoData);
         });
@@ -26,7 +31,7 @@ function TodoList() {
                     <Switch edge="end" checked={todo.done} onChange={e => updateTodo(todo.id, todo.done)}
                         inputProps={{ "aria-labelledby": "switch-list-label-bluetooth" }}
                     />
-                    <p style={{padding: 8, flexGrow: 1}}>{todo.task} {todo.id}</p>
+                    <p style={{padding: 8, flexGrow: 1}}><b>{todo.task}</b></p>
                     <IconButton aria-label="delete" onClick={e => firebase.firestore().collection('Todos').doc(todo.id).delete() } >
                         <DeleteIcon fontSize="large" />
                     </IconButton>
