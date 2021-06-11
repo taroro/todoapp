@@ -23,7 +23,7 @@ class Students extends React.Component {
         db.settings({
             timestampsInSnapshots: true
         });
-        const userRef = db.collection("Teacher").add({
+        db.collection("Teacher").add({
             fullname: this.state.fullname,
             email: this.state.email
         }); 
