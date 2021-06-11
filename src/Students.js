@@ -52,7 +52,7 @@ class Students extends React.Component {
           <input
             type="email"
             name="email"
-            placeholder="Email"
+            placeholder="Email Address"
             onChange={this.updateInput}
             value={this.state.email}
           />
