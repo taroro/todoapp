@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import TodoList from './TodoList';
+import UploadImage from './UploadImage';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
     <div>
-      <TodoList />
+      <UploadImage />
     </div>
   </React.StrictMode>,
   document.getElementById('root')
