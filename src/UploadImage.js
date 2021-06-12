@@ -24,19 +24,19 @@ function UploadImage() {
         );
       }
       return (
-        <div className="App">
-          <center>
+        <div className="App" style={{ display: "flex", flexDirection: "row", alignItems: "left", padding: 10 }}>
+          <div>
           <TextField
-                style={{ width: "100%" , padding: 8 }}
+                style={{ padding: 8 }}
                 id="standard-basic"
                 value={caption}
                 onChange={(e) => setCaption(e.target.value)}
-                label="Add Todo"
-                variant="outlined"
+                label="Say Something"
             />
+          </div>
           <input type="file" onChange={(e)=>{setImage(e.target.files[0])}}/>
-          <button onClick={upload}>Upload</button>
-          </center>
+          <button onClick={upload}>Post</button>
+          
         </div>
       );
 }
