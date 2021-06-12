@@ -14,14 +14,14 @@ import firebase from "./firebase";
 
 const useStyles = makeStyles((theme) => ({
     root: {
-      maxWidth: 200,
-      marginLeft: 10
+        maxWidth: 200,
+        marginLeft: 10
     },
     media: {
-      height: 0,
-      paddingTop: '56.25%', // 16:9
+        height: 0,
+        paddingTop: '56.25%', // 16:9
     }
-  }));
+}));
 
 function Instragoo() {
     const classes = useStyles();
@@ -31,53 +31,55 @@ function Instragoo() {
             const postData = [];
             snapshot.forEach(
                 (doc) => postData.push(
-                    { ...doc.data(), 
-                        id: doc.id }
-                    )
-            ); 
+                    {
+                        ...doc.data(),
+                        id: doc.id
+                    }
+                )
+            );
             setPosts(postData);
         });
     }, []);
 
     const like = (id, numLike) => {
-        firebase.firestore().collection('post').doc(id).set({like: numLike+1}, { merge: true });
+        firebase.firestore().collection('post').doc(id).set({ like: numLike + 1 }, { merge: true });
     }
 
     const dislike = (id, numLike) => {
-        firebase.firestore().collection('post').doc(id).set({dislike: numLike+1}, { merge: true });
+        firebase.firestore().collection('post').doc(id).set({ dislike: numLike + 1 }, { merge: true });
     }
 
     return (
         <>
-        <div style={{ }}>
-            <UploadImage />
-            <div style={{ display: "flex", flexDirection: "col", alignItems: "left", padding: 10 }}>
-            {posts.map((post, i) => (
-                <Card className={classes.root}>
-                    <CardMedia
-                        className={classes.media}
-                        image={post.imageUrl}
-                        title={post.caption}
-                    />
-                    <CardContent>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                        {post.caption}
-                        </Typography>
-                    </CardContent>
-                    <CardActions disableSpacing>
-                        <IconButton aria-label="Like" onClick={e => like(post.id, post.like)} >
-                            <ThumbUpIcon fontSize="small" />
-                        </IconButton>
-                        <p style={{padding: 8, flexGrow: 1}}><b>{post.like}</b></p>
-                        <IconButton aria-label="Dislike" onClick={e => dislike(post.id, post.dislike)} >
-                            <ThumbDownIcon fontSize="small" />
-                        </IconButton>
-                        <p style={{padding: 8, flexGrow: 1}}><b>{post.dislike}</b></p>
-                    </CardActions>
-                </Card>
-                ))}
+            <div style={{}}>
+                <UploadImage />
+                <div style={{ display: "flex", flexDirection: "col", alignItems: "left", padding: 10 }}>
+                    {posts.map((post, i) => (
+                        <Card className={classes.root}>
+                            <CardMedia
+                                className={classes.media}
+                                image={post.imageUrl}
+                                title={post.caption}
+                            />
+                            <CardContent>
+                                <Typography variant="body2" color="textSecondary" component="p">
+                                    {post.caption}
+                                </Typography>
+                            </CardContent>
+                            <CardActions disableSpacing>
+                                <IconButton aria-label="Like" onClick={e => like(post.id, post.like)} >
+                                    <ThumbUpIcon fontSize="small" />
+                                </IconButton>
+                                <p style={{ padding: 8, flexGrow: 1 }}><b>{post.like}</b></p>
+                                <IconButton aria-label="Dislike" onClick={e => dislike(post.id, post.dislike)} >
+                                    <ThumbDownIcon fontSize="small" />
+                                </IconButton>
+                                <p style={{ padding: 8, flexGrow: 1 }}><b>{post.dislike}</b></p>
+                            </CardActions>
+                        </Card>
+                    ))}
                 </div>
-                </div>
+            </div>
         </>
     )
 }
