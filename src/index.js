@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import UploadImage from './UploadImage';
+import Instragoo from './Instragoo';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
     <div>
-      <UploadImage />
+      <Instragoo />
     </div>
   </React.StrictMode>,
   document.getElementById('root')

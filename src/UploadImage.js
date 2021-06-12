@@ -13,11 +13,9 @@ function UploadImage() {
             setImageUrl(url) */
 
             storage.ref(`/images/${image.name}`).getDownloadURL().then((url) => {
-              setImageUrl(url)
-            }).then(() => {
               firebase.firestore().collection('post').add({
                 caption: caption,
-                imageUrl: imageUrl,
+                imageUrl: url,
                 like: 0,
                 dislike: 0
               })
@@ -38,7 +36,6 @@ function UploadImage() {
             />
           <input type="file" onChange={(e)=>{setImage(e.target.files[0])}}/>
           <button onClick={upload}>Upload</button>
-          <img src={imageUrl} />
           </center>
         </div>
       );
