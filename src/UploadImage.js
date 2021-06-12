@@ -23,6 +23,7 @@ function UploadImage() {
     }
     );
   }
+  
   return (
     <div className="App" style={{ display: "flex", flexDirection: "row", alignItems: "left", padding: 10 }}>
       <TextField
