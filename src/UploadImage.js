@@ -8,9 +8,7 @@ function UploadImage() {
     var storage = firebase.storage();
     const upload = ()=>{
         if(image == null) return;
-        console.log(image)
-        storage.ref(`/images/${image.name}`).put(image).on("state_changed",
-          () => {
+        storage.ref(`/images/${image.name}`).put(image).then(() => {
             /* let url = storage.ref(`/images/${image.name}`).getDownloadURL()
             setImageUrl(url) */
 
